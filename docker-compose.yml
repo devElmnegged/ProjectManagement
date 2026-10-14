@@ -1,0 +1,12 @@
+services:
+  api:
+    build: .
+    ports: ["8080:8080"]
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: "Server=host.docker.internal;Database=ProjectManagementDb;User Id=sa;Password=${SQL_PASSWORD};TrustServerCertificate=True;MultipleActiveResultSets=True"
+      Jwt__Issuer: "ProjectManagement.Api"
+      Jwt__Audience: "ProjectManagement.Client"
+      Jwt__Key: "${JWT_KEY}"
+      SeedAdmin__Email: "${SEED_ADMIN_EMAIL}"
+      SeedAdmin__Password: "${SEED_ADMIN_PASSWORD}"
